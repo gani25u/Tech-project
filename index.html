@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech For Girls - Registration</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7C4DFF;
+            --primary-light: #B388FF;
+            --secondary: #FF80AB;
+            --accent: #82B1FF;
+            --dark: #263238;
+            --light: #ECEFF1;
+            --success: #69F0AE;
+            --whatsapp: #25D366;
+            --white: #FFFFFF;
+            --gray: #CFD8DC;
+            --shadow: 0 10px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--white);
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            position: relative;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        .header h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        .form-container {
+            padding: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 30px;
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+        .form-section:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+        }
+
+        .form-section h2 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .form-section h2 i {
+            font-size: 1.2em;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 14px 16px;
+            border: 2px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(124, 77, 255, 0.2);
+        }
+
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 1em;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 28px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #6a3dff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(124, 77, 255, 0.3);
+        }
+
+        .btn-primary:disabled {
+            background-color: var(--gray);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp);
+            color: var(--white);
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1fba5a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(37, 211, 102, 0.3);
+        }
+
+        .whatsapp-share {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .share-status {
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .share-counter {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .share-complete {
+            color: var(--success);
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .file-upload {
+            position: relative;
+            margin-top: 15px;
+        }
+
+        .file-upload input[type="file"] {
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .upload-area {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            border: 2px dashed var(--gray);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            background-color: rgba(236, 239, 241, 0.5);
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary);
+            background-color: rgba(124, 77, 255, 0.05);
+        }
+
+        .upload-area i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .upload-area p {
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .file-preview {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(236, 239, 241, 0.5);
+            min-height: 60px;
+        }
+
+        .file-preview img {
+            max-width: 100%;
+            max-height: 200px;
+            display: block;
+            margin: 0 auto 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .file-info {
+            font-size: 0.9rem;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .submit-section {
+            margin-top: 30px;
+        }
+
+        .success-message {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(255, 255, 255, 0.95);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+            text-align: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.6s ease;
+            z-index: 10;
+        }
+
+        .success-message.show {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .success-message i {
+            font-size: 5rem;
+            color: var(--success);
+            margin-bottom: 20px;
+            animation: bounce 1s ease infinite alternate;
+        }
+
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-15px); }
+        }
+
+        .success-message h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .success-message p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            opacity: 0.8;
+            max-width: 500px;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 25px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .form-container {
+                padding: 25px 20px;
+            }
+            
+            .form-section {
+                padding: 20px;
+            }
+        }
+
+        /* Animation for form elements */
+        .form-group {
+            animation: slideUp 0.5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Delay animations for each form group */
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Join Tech For Girls</h1>
+            <p>Empowering women in technology through education and community</p>
+        </div>
+
+        <div class="form-container">
+            <form id="registrationForm">
+                <div class="form-section">
+                    <h2><i class="fas fa-user-graduate"></i> Basic Details</h2>
+                    
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email address">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="college">College/Department</label>
+                        <select id="college" name="college" required>
+                            <option value="" disabled selected>Select your college/department</option>
+                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fab fa-whatsapp"></i> Share With Friends</h2>
+                    <p>Help us grow by sharing with 5 friends!</p>
+                    
+                    <div class="whatsapp-share">
+                        <button type="button" id="whatsappBtn" class="btn btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i> Share on WhatsApp
+                        </button>
+                        
+                        <div class="share-status">
+                            <span id="shareCounter" class="share-counter">Click count: 0/5</span>
+                            <span id="shareComplete" class="share-complete">
+                                <i class="fas fa-check-circle"></i> Sharing complete. Please continue.
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h2><i class="fas fa-cloud-upload-alt"></i> Upload Documents</h2>
+                    <p>Upload your resume, photo, or any supporting documents</p>
+                    
+                    <div class="file-upload">
+                        <div class="upload-area">
+                            <i class="fas fa-file-upload"></i>
+                            <p>Click to browse files or drag and drop here</p>
+                            <p class="small">(Supports JPG, PNG, PDF - Max 5MB)</p>
+                        </div>
+                        <input type="file" id="screenshot" name="screenshot" accept="image/*,.pdf">
+                        
+                        <div class="file-preview" id="filePreview"></div>
+                    </div>
+                </div>
+
+                <div class="submit-section">
+                    <button type="submit" id="submitBtn" class="btn btn-primary" disabled>
+                        <i class="fas fa-paper-plane"></i> Submit Registration
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            <i class="fas fa-check-circle"></i>
+            <h2>🎉 Registration Successful!</h2>
+            <p>Your submission has been recorded. Thanks for being part of Tech for Girls!</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if already submitted
+            if (localStorage.getItem('formSubmitted') === 'true') {
+                disableForm();
+                document.getElementById('successMessage').classList.add('show');
+                return;
+            }
+
+            // Form elements
+            const form = document.getElementById('registrationForm');
+            const whatsappBtn = document.getElementById('whatsappBtn');
+            const shareCounter = document.getElementById('shareCounter');
+            const shareComplete = document.getElementById('shareComplete');
+            const submitBtn = document.getElementById('submitBtn');
+            const fileInput = document.getElementById('screenshot');
+            const filePreview = document.getElementById('filePreview');
+            const successMessage = document.getElementById('successMessage');
+            const uploadArea = document.querySelector('.upload-area');
+
+            // WhatsApp share counter
+            let clickCount = 0;
+            const maxClicks = 5;
+            const shareMessage = "Hey friend! 👋\n\nI just joined Tech For Girls - an amazing community empowering women in technology through workshops, mentorship, and networking opportunities.\n\nYou should check it out too! 🚀\n\n#WomenInTech #TechForGirls";
+
+            // WhatsApp share button click handler
+            whatsappBtn.addEventListener('click', function() {
+                if (clickCount < maxClicks) {
+                    clickCount++;
+                    updateShareCounter();
+
+                    // Open WhatsApp with share message
+                    const encodedMessage = encodeURIComponent(shareMessage);
+                    let whatsappUrl;
+                    // Use whatsapp:// on mobile, https://wa.me on desktop
+                    if (/Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(navigator.userAgent)) {
+                        whatsappUrl = `whatsapp://send?text=${encodedMessage}`;
+                    } else {
+                        whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+                    }
+                    const win = window.open(whatsappUrl, '_blank');
+                    setTimeout(function() {
+                        if (!win || win.closed || typeof win.closed === 'undefined') {
+                            // Fallback: show prompt to copy message
+                            prompt('Could not open WhatsApp. Please copy and share this message manually:', shareMessage);
+                        }
+                    }, 500);
+
+                    // Check if sharing is complete
+                    if (clickCount >= maxClicks) {
+                        shareComplete.style.display = 'inline';
+                        whatsappBtn.disabled = true;
+                        whatsappBtn.classList.remove('btn-whatsapp');
+                        whatsappBtn.classList.add('btn-primary');
+                        whatsappBtn.innerHTML = '<i class="fas fa-check"></i> Shared Successfully';
+                        submitBtn.disabled = false;
+                    }
+                }
+            });
+
+            // File upload preview
+            fileInput.addEventListener('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    filePreview.innerHTML = '';
+                    
+                    if (file.size > 5 * 1024 * 1024) {
+                        filePreview.innerHTML = '<p class="file-info" style="color:red;">File is too large (max 5MB allowed)</p>';
+                        fileInput.value = '';
+                        return;
+                    }
+                    
+                    if (file.type.startsWith('image/')) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            const img = document.createElement('img');
+                            img.src = e.target.result;
+                            filePreview.appendChild(img);
+                            
+                            const fileInfo = document.createElement('p');
+                            fileInfo.className = 'file-info';
+                            fileInfo.innerHTML = `<strong>${file.name}</strong> (${(file.size / 1024).toFixed(1)} KB)`;
+                            filePreview.appendChild(fileInfo);
+                        };
+                        reader.readAsDataURL(file);
+                    } else {
+                        const fileInfo = document.createElement('p');
+                        fileInfo.className = 'file-info';
+                        fileInfo.innerHTML = `<i class="fas fa-file-pdf" style="color:red;"></i> <strong>${file.name}</strong> (${(file.size / 1024).toFixed(1)} KB)`;
+                        filePreview.appendChild(fileInfo);
+                    }
+                    
+                    uploadArea.innerHTML = `
+                        <i class="fas fa-check-circle" style="color:var(--success);"></i>
+                        <p>File selected</p>
+                    `;
+                }
+            });
+
+            // Drag and drop functionality
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--primary)';
+                uploadArea.style.backgroundColor = 'rgba(124, 77, 255, 0.1)';
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.style.borderColor = 'var(--gray)';
+                uploadArea.style.backgroundColor = 'rgba(236, 239, 241, 0.5)';
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = 'var(--gray)';
+                uploadArea.style.backgroundColor = 'rgba(236, 239, 241, 0.5)';
+                
+                if (e.dataTransfer.files.length) {
+                    fileInput.files = e.dataTransfer.files;
+                    const event = new Event('change');
+                    fileInput.dispatchEvent(event);
+                }
+            });
+
+            // Form submission handler
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Check if sharing is complete
+                if (clickCount < maxClicks) {
+                    alert('Please share with 5 friends before submitting.');
+                    return;
+                }
+                
+                // Collect form data
+                const formData = new FormData(form);
+                const data = {
+                    name: formData.get('name'),
+                    phone: formData.get('phone'),
+                    email: formData.get('email'),
+                    college: formData.get('college'),
+                    screenshot: fileInput.files[0] ? fileInput.files[0].name : 'No file uploaded',
+                    timestamp: new Date().toISOString()
+                };
+                
+                // Here you would typically send the data to your Google Sheets via Apps Script
+                // For now, we'll log it and simulate submission
+                console.log('Form data to be submitted:', data);
+                
+                // Simulate API call
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+                
+                // This would be replaced with actual fetch to Google Apps Script
+                setTimeout(() => {
+                    // Mark as submitted in localStorage
+                    localStorage.setItem('formSubmitted', 'true');
+                    
+                    // Disable form and show success message
+                    disableForm();
+                    successMessage.classList.add('show');
+                    
+                    // In a real implementation, you would:
+                    // 1. Upload the file to Google Drive via Apps Script
+                    // 2. Save the form data along with file link to Google Sheets
+                    // 3. Handle success/error responses
+                }, 2000);
+            });
+
+            // Helper functions
+            function updateShareCounter() {
+                shareCounter.textContent = `Click count: ${clickCount}/${maxClicks}`;
+            }
+            
+            function disableForm() {
+                const inputs = form.querySelectorAll('input, select, button, textarea');
+                inputs.forEach(input => {
+                    input.disabled = true;
+                });
+                form.style.opacity = '0.7';
+            }
+        });
+
+        // Google Apps Script integration would go here
+        // This is a placeholder for the actual Apps Script deployment URL
+        async function submitToGoogleSheets(data) {
+            const scriptUrl = 'YOUR_APPS_SCRIPT_WEB_APP_URL';
+            
+            try {
+                const response = await fetch(scriptUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                
+                return await response.json();
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                throw error;
+            }
+        }
+    </script>
+</body>
+</html>
